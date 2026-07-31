@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://drgd4mjpkp51s"]
+
+[ext_resource type="Texture2D" uid="uid://c0msqkgxfvx31" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f0.png" id="1_7m4ca"]
+[ext_resource type="Script" uid="uid://c45rdeyqoofj3" path="res://Scrips/State-machines/Enemy_state-machine/enemy_demon.gd" id="1_sdjng"]
+[ext_resource type="Texture2D" uid="uid://dyrhmtc21wvr7" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f1.png" id="2_imp5u"]
+[ext_resource type="Script" uid="uid://d0d4k0yw0onh4" path="res://Scrips/State-machines/Enemy_state-machine/enemy_state_machine.gd" id="2_oujep"]
+[ext_resource type="Texture2D" uid="uid://b8wqxv4u3tekt" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f2.png" id="3_b6iin"]
+[ext_resource type="Script" uid="uid://cr0f5xymd3a77" path="res://Scrips/State-machines/Enemy_state-machine/Enemy_states/enemy_state_patrol.gd" id="3_lg456"]
+[ext_resource type="Script" uid="uid://0frjlvajvbry" path="res://Scrips/State-machines/Enemy_state-machine/Enemy_states/enemy_state_run.gd" id="4_imp5u"]
+[ext_resource type="Texture2D" uid="uid://dfdn0172y5r4p" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f3.png" id="4_oyf36"]
+[ext_resource type="Script" uid="uid://cp53rw0hpp8xf" path="res://Scrips/State-machines/Enemy_state-machine/Enemy_states/enemy_state_attack.gd" id="5_3bmr3"]
+[ext_resource type="Texture2D" uid="uid://t7hvkukgdwek" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f0.png" id="5_ndb4b"]
+[ext_resource type="Script" uid="uid://c8paixhiygoxn" path="res://Scrips/State-machines/Enemy_state-machine/Enemy_states/enemy_state_idle.gd" id="6_b6iin"]
+[ext_resource type="Texture2D" uid="uid://12ffnfvojmbo" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f1.png" id="6_sdjng"]
+[ext_resource type="Texture2D" uid="uid://c5r751byug0ke" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f2.png" id="7_bueg5"]
+[ext_resource type="Texture2D" uid="uid://cqy4c6dsijd7h" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f3.png" id="8_jmbip"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oujep"]
+atlas = ExtResource("1_7m4ca")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_72a2a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7m4ca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_imp5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b6iin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oyf36")
+}],
+"loop": 1,
+"name": &"Attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oujep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_imp5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b6iin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oyf36")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ndb4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sdjng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bueg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jmbip")
+}],
+"loop": 1,
+"name": &"Patrol",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ndb4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sdjng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bueg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jmbip")
+}],
+"loop": 1,
+"name": &"Run",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbbmb"]
+size = Vector2(18, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndb4b"]
+radius = 6.6749954
+
+[node name="Enemy_demon" type="CharacterBody2D" unique_id=826265328]
+collision_mask = 32
+script = ExtResource("1_sdjng")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1031386865]
+sprite_frames = SubResource("SpriteFrames_72a2a")
+animation = &"Attack"
+frame_progress = 0.84572303
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=239556892]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_vbbmb")
+
+[node name="Ray-colision-right" type="RayCast2D" parent="." unique_id=1164424183]
+position = Vector2(-12, 10)
+target_position = Vector2(0, 10)
+collision_mask = 32
+
+[node name="Ray-colision-left" type="RayCast2D" parent="." unique_id=1024141143]
+position = Vector2(12, 10)
+target_position = Vector2(0, 10)
+collision_mask = 32
+
+[node name="Area_attack" type="Area2D" parent="." unique_id=224687307]
+collision_layer = 64
+collision_mask = 128
+
+[node name="Collision_vision" type="CollisionShape2D" parent="Area_attack" unique_id=2036657946]
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_ndb4b")
+
+[node name="Ray-vision-left" type="RayCast2D" parent="." unique_id=2136478638]
+target_position = Vector2(100, 0)
+collision_mask = 128
+
+[node name="Ray-vision-right" type="RayCast2D" parent="." unique_id=80681719]
+target_position = Vector2(-100, 0)
+collision_mask = 128
+
+[node name="Enemy_state-machine" type="Node" parent="." unique_id=311146710 node_paths=PackedStringArray("Character", "Animations", "Ray_colision_right", "Ray_colision_left", "Range_attack", "Ray_vision_left", "Ray_vision_right", "Current_state")]
+script = ExtResource("2_oujep")
+Character = NodePath("..")
+Animations = NodePath("../AnimatedSprite2D")
+Ray_colision_right = NodePath("../Ray-colision-right")
+Ray_colision_left = NodePath("../Ray-colision-left")
+Range_attack = NodePath("../Area_attack")
+Ray_vision_left = NodePath("../Ray-vision-left")
+Ray_vision_right = NodePath("../Ray-vision-right")
+Current_state = NodePath("Enemy_state-idle")
+
+[node name="Enemy_state-patrol" type="Node" parent="Enemy_state-machine" unique_id=1985670519]
+script = ExtResource("3_lg456")
+
+[node name="Enemy_state-run" type="Node" parent="Enemy_state-machine" unique_id=488701455]
+script = ExtResource("4_imp5u")
+
+[node name="Enemy_state-attack" type="Node" parent="Enemy_state-machine" unique_id=2032024265]
+script = ExtResource("5_3bmr3")
+
+[node name="Enemy_state-idle" type="Node" parent="Enemy_state-machine" unique_id=1661676930]
+script = ExtResource("6_b6iin")
+
+[connection signal="body_entered" from="Area_attack" to="Enemy_state-machine/Enemy_state-run" method="_on_area_attack_body_entered"]
+[connection signal="body_exited" from="Area_attack" to="Enemy_state-machine/Enemy_state-attack" method="_on_area_attack_body_exited"]

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://ckrrwyvc3e2ds"]
+
+[ext_resource type="PackedScene" uid="uid://bowcqwd5o446n" path="res://Escens/Combat/combat.tscn" id="1_2ht7w"]
+[ext_resource type="PackedScene" uid="uid://dkvia384mbcqi" path="res://Escens/Interfaces/button_panel.tscn" id="2_xtgwn"]
+
+[node name="Prueba_interfas" type="Control" unique_id=2054014687]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1722470251]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1830971461]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Top-panel" type="PanelContainer" parent="CanvasLayer/VBoxContainer" unique_id=791512092]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer/Top-panel" unique_id=1823431560]
+layout_mode = 2
+
+[node name="HBoxLife" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/Top-panel/VBoxContainer" unique_id=1273750105]
+layout_mode = 2
+
+[node name="Label-life" type="Label" parent="CanvasLayer/VBoxContainer/Top-panel/VBoxContainer/HBoxLife" unique_id=253049758]
+layout_mode = 2
+text = " Life: "
+
+[node name="Life" type="Label" parent="CanvasLayer/VBoxContainer/Top-panel/VBoxContainer/HBoxLife" unique_id=528651893]
+layout_mode = 2
+text = "/"
+
+[node name="HBoxDefend" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/Top-panel/VBoxContainer" unique_id=1235253671]
+layout_mode = 2
+
+[node name="Label-defend" type="Label" parent="CanvasLayer/VBoxContainer/Top-panel/VBoxContainer/HBoxDefend" unique_id=1293512574]
+layout_mode = 2
+text = " Defend: "
+
+[node name="Defend" type="Label" parent="CanvasLayer/VBoxContainer/Top-panel/VBoxContainer/HBoxDefend" unique_id=1660379482]
+layout_mode = 2
+text = "/"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/VBoxContainer" unique_id=712358289]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/VBoxContainer/SubViewportContainer" unique_id=1886341401]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 505)
+render_target_update_mode = 4
+
+[node name="Combat" parent="CanvasLayer/VBoxContainer/SubViewportContainer/SubViewport" unique_id=2001271164 node_paths=PackedStringArray("life", "defend") instance=ExtResource("1_2ht7w")]
+life = NodePath("../../../Top-panel/VBoxContainer/HBoxLife/Life")
+defend = NodePath("../../../Top-panel/VBoxContainer/HBoxDefend/Defend")
+
+[node name="Button-panel" parent="CanvasLayer/VBoxContainer" unique_id=1563076932 instance=ExtResource("2_xtgwn")]
+layout_mode = 2
+
+[connection signal="skill" from="CanvasLayer/VBoxContainer/Button-panel" to="CanvasLayer/VBoxContainer/SubViewportContainer/SubViewport/Combat" method="_on_buttonpanel_skill"]

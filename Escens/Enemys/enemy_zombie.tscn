@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://cprjgsv2ep0nk"]
+
+[ext_resource type="Texture2D" uid="uid://hsoe030h3ujj" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_idle_anim_f0.png" id="1_2r2gp"]
+[ext_resource type="Texture2D" uid="uid://b1jagkqw4aon1" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_run_anim_f0.png" id="1_nkiyn"]
+[ext_resource type="Script" uid="uid://bx085jtvq40i4" path="res://Scrips/State-machines/Enemy-zombie_state-machine/enemy_zombie_state_machine.gd" id="1_p1omr"]
+[ext_resource type="Texture2D" uid="uid://bmbcrolnyptd2" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_idle_anim_f1.png" id="2_ornnm"]
+[ext_resource type="Texture2D" uid="uid://hojdj2sh6e60" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_run_anim_f1.png" id="2_ysxfe"]
+[ext_resource type="Texture2D" uid="uid://bguierf0g6hb3" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_idle_anim_f2.png" id="3_f3d83"]
+[ext_resource type="Texture2D" uid="uid://cpgay6b33j4xg" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_run_anim_f2.png" id="3_ydegj"]
+[ext_resource type="Texture2D" uid="uid://dkeusoqt0ock3" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_run_anim_f3.png" id="4_3awqx"]
+[ext_resource type="Texture2D" uid="uid://de56jjauqoe7r" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_idle_anim_f3.png" id="4_x487g"]
+[ext_resource type="Script" uid="uid://p4m8ksfv1x5l" path="res://Scrips/State-machines/Enemy-zombie_state-machine/Zombie_states/zombie_state_patrol.gd" id="6_ornnm"]
+[ext_resource type="Script" uid="uid://38f8866kr0sl" path="res://Scrips/State-machines/Enemy-zombie_state-machine/Zombie_states/zombie_state_idle.gd" id="7_f3d83"]
+[ext_resource type="Script" uid="uid://omggwityhepf" path="res://Scrips/State-machines/Enemy-zombie_state-machine/Zombie_states/zombie_state_chasing.gd" id="8_g7bcl"]
+[ext_resource type="Script" uid="uid://dqcg3nxpxlper" path="res://Scrips/State-machines/Enemy-zombie_state-machine/Zombie_states/zombie_state_attack.gd" id="9_aedk1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kr6j1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2r2gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ornnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f3d83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x487g")
+}],
+"loop": 1,
+"name": &"Attack",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nkiyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ysxfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ydegj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3awqx")
+}],
+"loop": 1,
+"name": &"Chasing",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2r2gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ornnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f3d83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x487g")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nkiyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ysxfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ydegj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3awqx")
+}],
+"loop": 1,
+"name": &"Patrol",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vck1y"]
+size = Vector2(20, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nkiyn"]
+radius = 25.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vck1y"]
+radius = 23.0
+height = 46.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kr6j1"]
+size = Vector2(36, 28)
+
+[node name="Enemy_zombie" type="CharacterBody2D" unique_id=665400911]
+collision_mask = 32
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=299012310]
+sprite_frames = SubResource("SpriteFrames_kr6j1")
+animation = &"Chasing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=564349602]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_vck1y")
+debug_color = Color(0.0234375, 1, 0, 0.41960785)
+
+[node name="Area_vision" type="Area2D" parent="." unique_id=1458486793]
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area_vision" unique_id=301891207]
+polygon = PackedVector2Array(0, 0, 100, 30, 100, -30)
+
+[node name="Area_attack" type="Area2D" parent="." unique_id=2010383595]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_attack" unique_id=828350256]
+shape = SubResource("CircleShape2D_nkiyn")
+disabled = true
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Area_attack-range" type="Area2D" parent="." unique_id=556878291]
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_attack-range" unique_id=627257931]
+shape = SubResource("CapsuleShape2D_vck1y")
+
+[node name="Area-damage" type="Area2D" parent="." unique_id=150006208]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area-damage" unique_id=510024932]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_kr6j1")
+debug_color = Color(0, 0, 1, 0.41960785)
+
+[node name="Ray_colision_left" type="RayCast2D" parent="." unique_id=1252846627]
+position = Vector2(13, 14)
+target_position = Vector2(0, 10)
+collision_mask = 32
+
+[node name="Ray_colision_right" type="RayCast2D" parent="." unique_id=1534977690]
+position = Vector2(-13, 14)
+target_position = Vector2(0, 10)
+collision_mask = 32
+
+[node name="Enemy-zombie_state-machine" type="Node" parent="." unique_id=2011743942 node_paths=PackedStringArray("Character", "Animations", "Area_vision", "Ray_colision_left", "Ray_colision_right", "Area_attack", "Colision_attack", "Label_life", "Current_state")]
+script = ExtResource("1_p1omr")
+Character = NodePath("..")
+Animations = NodePath("../AnimatedSprite2D")
+Area_vision = NodePath("../Area_vision")
+Ray_colision_left = NodePath("../Ray_colision_left")
+Ray_colision_right = NodePath("../Ray_colision_right")
+Area_attack = NodePath("../Area_attack")
+Colision_attack = NodePath("../Area_attack/CollisionShape2D")
+Label_life = NodePath("../PanelContainer/Label")
+Current_state = NodePath("Zombie_state-idle")
+
+[node name="Zombie_state-patrol" type="Node" parent="Enemy-zombie_state-machine" unique_id=745696464]
+script = ExtResource("6_ornnm")
+
+[node name="Zombie_state-idle" type="Node" parent="Enemy-zombie_state-machine" unique_id=1579896395]
+script = ExtResource("7_f3d83")
+
+[node name="Zombie_state-chasing" type="Node" parent="Enemy-zombie_state-machine" unique_id=2023639512]
+script = ExtResource("8_g7bcl")
+
+[node name="Zombie_state-attack" type="Node" parent="Enemy-zombie_state-machine" unique_id=87446939]
+script = ExtResource("9_aedk1")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1011510474]
+offset_left = -19.0
+offset_top = -34.0
+offset_right = 21.0
+offset_bottom = -11.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PanelContainer" unique_id=846661730]
+layout_mode = 2
+text = "/"
+
+[connection signal="body_entered" from="Area_vision" to="Enemy-zombie_state-machine/Zombie_state-patrol" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area_attack-range" to="Enemy-zombie_state-machine/Zombie_state-chasing" method="_on_area_range_body_entered"]
+[connection signal="body_exited" from="Area_attack-range" to="Enemy-zombie_state-machine/Zombie_state-attack" method="_on_area_range_body_exited"]
+[connection signal="area_entered" from="Area-damage" to="Enemy-zombie_state-machine" method="_on_areadamage_area_entered"]
