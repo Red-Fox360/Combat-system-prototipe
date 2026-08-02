@@ -21,6 +21,10 @@ func Zombie_procces(delta):
 			On_the_edge = false
 			Machine.Target = null
 			Machine.Chage_state("Zombie_state-patrol")
+		if Direction > 100 || Direction < -100:
+			On_the_edge = false
+			Machine.Target = null
+			Machine.Chage_state("Zombie_state-patrol")
 	else:
 		if Machine.Facing_dir == 1 && !Machine.Ray_colision_left.is_colliding():
 			On_the_edge = true

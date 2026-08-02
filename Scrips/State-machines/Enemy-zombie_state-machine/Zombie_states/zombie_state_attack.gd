@@ -8,11 +8,11 @@ func Zombie_procces(delta):
 	Machine.Colision_attack.disabled = false
 	await Animations.animation_looped
 	Machine.Colision_attack.disabled = true
-	if Direction > 10 || Direction > -10:
+	if Direction > 10 || Direction < -10:
 		if Direction > 10:
 			Machine.Facing_dir = 1
 			Machine.Chage_state("Zombie_state-chasing")
-		elif Direction > -10:
+		elif Direction < -10:
 			Machine.Facing_dir = -1
 			Machine.Chage_state("Zombie_state-chasing")
 

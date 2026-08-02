@@ -7,8 +7,8 @@ class_name Enemy_machine
 @export var Ray_colision_right:RayCast2D
 @export var Ray_colision_left:RayCast2D
 @export var Range_attack:Area2D
-@export var Ray_vision_left:RayCast2D
-@export var Ray_vision_right:RayCast2D
+@export var Area_vision:Area2D
+@export var Colision_attack:CollisionShape2D
 #endregion
 
 #region Machine vars
@@ -24,8 +24,10 @@ func _ready():
 func _process(delta):
 	if Facing_dir == 1:
 		Animations.flip_h = false
+		Area_vision.scale.x = 1
 	else:
 		Animations.flip_h = true
+		Area_vision.scale.x = -1
 	Current_state.Enemy_procces(delta)
 
 func _physics_process(delta):
