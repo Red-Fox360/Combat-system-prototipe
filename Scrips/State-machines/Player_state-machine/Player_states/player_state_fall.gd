@@ -3,7 +3,7 @@ extends Player_state
 func Player_init():
 	Animations.play("Fall")
 
-func Player_procces(delta):
+func Player_procces(_delta):
 	if Character.is_on_floor():
 		Machine.Change_state("Player_state-idle")
 

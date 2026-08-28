@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://bvloaeiu855f7"]
+
+[ext_resource type="Script" uid="uid://dc1gexve5m434" path="res://Scrips/Menus_scrips/select_enemy_menu.gd" id="1_rjm1u"]
+[ext_resource type="Texture2D" uid="uid://cwx0y18ea4555" path="res://icon.svg" id="2_277k6"]
+[ext_resource type="Texture2D" uid="uid://c0msqkgxfvx31" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_demon_idle_anim_f0.png" id="3_g3e1l"]
+[ext_resource type="Texture2D" uid="uid://hsoe030h3ujj" path="res://Sprites/0x72_DungeonTilesetII_v1.7/frames/big_zombie_idle_anim_f0.png" id="4_btyr4"]
+
+[node name="Select-enemy_menu" type="Control" unique_id=1103263711 node_paths=PackedStringArray("Option_enemy")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rjm1u")
+Option_enemy = NodePath("TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/OptionButton")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1776661796]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_277k6")
+stretch_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect" unique_id=1352956992]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.5
+offset_top = -45.5
+offset_right = 127.5
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TextureRect/CenterContainer" unique_id=494794472]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/CenterContainer/PanelContainer" unique_id=1940974786]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer" unique_id=2036186901]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1328312934]
+layout_mode = 2
+text = "Select a one option"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1692768792]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=328007284]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" unique_id=421339844]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1922531919]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=340409615]
+layout_mode = 2
+text = "1) Select a enemy"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1811346095]
+layout_mode = 2
+
+[node name="Acept_button" type="Button" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=514198760]
+layout_mode = 2
+text = "Aceptar"
+
+[node name="OptionButton" type="OptionButton" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1045212739]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Big Demon"
+popup/item_0/icon = ExtResource("3_g3e1l")
+popup/item_0/id = 0
+popup/item_1/text = "Big Zombie"
+popup/item_1/icon = ExtResource("4_btyr4")
+popup/item_1/id = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1573106077]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2" unique_id=517000660]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer" unique_id=2075466641]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=1105654516]
+layout_mode = 2
+text = "2) Select a map"
+
+[node name="Button" type="Button" parent="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=1552769018]
+layout_mode = 2
+text = "Map 1"
+
+[connection signal="pressed" from="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Acept_button" to="." method="_on_acept_button_pressed"]
+[connection signal="pressed" from="TextureRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/Button" to="." method="_on_button_map_pressed"]

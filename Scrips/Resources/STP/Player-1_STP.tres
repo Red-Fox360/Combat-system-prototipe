@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="STP" format=3 uid="uid://08ovll0xrdfv"]
+
+[ext_resource type="Script" uid="uid://b8ayl53r8uksl" path="res://Scrips/Resources/STP/STP.gd" id="1_g2waw"]
+
+[resource]
+script = ExtResource("1_g2waw")
+metadata/_custom_type_script = "uid://b8ayl53r8uksl"

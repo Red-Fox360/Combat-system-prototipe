@@ -5,14 +5,16 @@ extends Node2D
 @export var Big_zombie:PackedScene
 var Current_enemy
 
-@onready var player_referen = $"Player/Player_state_machine"
-@export var life:Label
-@export var defend:Label
+@export var player_ref:MachineV2_player
+var life:Label
+var defend:Label
+
+signal Repeat_emition(index)
 
 func _ready():
-	life.text = str(player_referen.Current_life)
-	defend.text = str(player_referen.Current_defend)
-	Current_enemy = Config_enemy.Select_enemy
+	life.text = str(0)
+	defend.text = str(0)
+	Current_enemy = Config_combat.Select_enemy
 	match Current_enemy:
 		0:
 			get_node("Enemy-spawner").add_child(Big_demon.instantiate())
@@ -26,9 +28,12 @@ func _on_buttonpanel_skill(index: Variant) -> void:
 
 func Update_labels(Label_name):
 	if Label_name == "life":
-		life.text = str(player_referen.Current_life)
+		life.text = str(0)
 	elif Label_name == "defend":
-		defend.text = str(player_referen.Current_defend)
+		defend.text = str(0)
 
 func _on_player_update_labels(index: Variant) -> void:
 	Update_labels(index)
+
+func _Player_emit(index: Variant) -> void:
+	Repeat_emition.emit(index)

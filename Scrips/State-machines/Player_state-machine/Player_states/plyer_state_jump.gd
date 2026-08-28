@@ -4,7 +4,7 @@ func Player_init():
 	Animations.play("Jump")
 	Character.velocity.y = Jump_force
 
-func Player_procces(delta):
+func Player_procces(_delta):
 	if  not Character.is_on_floor() and Character.velocity.y == Jump_force:
 		Machine.Change_state("Player_state-fall")
 

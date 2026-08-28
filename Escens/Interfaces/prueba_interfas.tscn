@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ckrrwyvc3e2ds"]
 
 [ext_resource type="PackedScene" uid="uid://bowcqwd5o446n" path="res://Escens/Combat/combat.tscn" id="1_2ht7w"]
+[ext_resource type="Script" uid="uid://lgdyypdrxjn7" path="res://Scrips/Configs/Manager-signals.gd" id="1_7nckt"]
 [ext_resource type="PackedScene" uid="uid://dkvia384mbcqi" path="res://Escens/Interfaces/button_panel.tscn" id="2_xtgwn"]
 
 [node name="Prueba_interfas" type="Control" unique_id=2054014687]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7nckt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1722470251]
 
@@ -61,11 +63,10 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1152, 505)
 render_target_update_mode = 4
 
-[node name="Combat" parent="CanvasLayer/VBoxContainer/SubViewportContainer/SubViewport" unique_id=2001271164 node_paths=PackedStringArray("life", "defend") instance=ExtResource("1_2ht7w")]
-life = NodePath("../../../Top-panel/VBoxContainer/HBoxLife/Life")
-defend = NodePath("../../../Top-panel/VBoxContainer/HBoxDefend/Defend")
+[node name="Combat" parent="CanvasLayer/VBoxContainer/SubViewportContainer/SubViewport" unique_id=2001271164 instance=ExtResource("1_2ht7w")]
 
 [node name="Button-panel" parent="CanvasLayer/VBoxContainer" unique_id=1563076932 instance=ExtResource("2_xtgwn")]
 layout_mode = 2
 
+[connection signal="Repeat_emition" from="CanvasLayer/VBoxContainer/SubViewportContainer/SubViewport/Combat" to="." method="_Combat_repeat_emition"]
 [connection signal="skill" from="CanvasLayer/VBoxContainer/Button-panel" to="CanvasLayer/VBoxContainer/SubViewportContainer/SubViewport/Combat" method="_on_buttonpanel_skill"]
